@@ -1051,7 +1051,7 @@ async def task2():
 
         if timer >= 0:
             timer += 1
-            if timer == 100:  # if one day has passed
+            if timer == 86400:  # if one day has passed
                 timer = -1
             print('timer{}'.format(timer))
 
