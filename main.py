@@ -192,8 +192,8 @@ def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:
 
 # Check if existing user chat. If not, Initialize.
 def UserChecker(ChatIDCurrent):
-    print(users[x].chat_id)
     for x in users:
+        print(users[1].chat_id)
         if ChatIDCurrent == users[x].chat_id:
             return
 
