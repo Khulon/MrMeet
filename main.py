@@ -1055,7 +1055,11 @@ async def task2():
             timer += 1
             if timer == 1000:  # if one day has passed
                 timer = -1
-                print(users[x].chat_id)
+                print('printing now')
+                for x in users:
+                    print('x is {}'.format(x))
+                    print('and the chat id is {}'.format(users[x].chat_id))
+                print('end print')
             print('timer{}'.format(timer))
 
         else:
