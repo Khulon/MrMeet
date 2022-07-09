@@ -192,6 +192,7 @@ def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:
 
 # Check if existing user chat. If not, Initialize.
 def UserChecker(ChatIDCurrent):
+    print(users[x].chat_id)
     for x in users:
         if ChatIDCurrent == users[x].chat_id:
             return
@@ -1051,8 +1052,9 @@ async def task2():
 
         if timer >= 0:
             timer += 1
-            if timer == 86400:  # if one day has passed
+            if timer == 1000:  # if one day has passed
                 timer = -1
+                print(users[x].chat_id)
             print('timer{}'.format(timer))
 
         else:
