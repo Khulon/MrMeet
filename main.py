@@ -55,8 +55,11 @@ class User:
 
 
 def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:Date 3:Status
-    connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
-                                 database='g4gIqpoa8A',
+    #connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
+    #                             database='g4gIqpoa8A',
+    #                             charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host='sql6.freemysqlhosting.net', user='sql6505205', password='LCBNdFunMf',
+                                 database='sql6505205',
                                  charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     cur = connection.cursor()
 
@@ -326,8 +329,8 @@ async def StartTab(message: types.Message):
 @dp.message_handler(commands=['WebApp'])
 async def WebAppTab(message: types.Message):
     ChatIDCurrent = message.chat.id
-    connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
-                                 database='g4gIqpoa8A',
+    connection = pymysql.connect(host='sql6.freemysqlhosting.net', user='sql6505205', password='LCBNdFunMf',
+                                 database='sql6505205',
                                  charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     cur = connection.cursor()
     cur.execute("SELECT pass FROM chat WHERE chat_id = {}".format(ChatIDCurrent))
@@ -1072,9 +1075,9 @@ async def task2():
                 timer = 0
             else:
                 UserCounter += 1
-                connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
-                                             database='g4gIqpoa8A',
-                                             charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+                connection = pymysql.connect(host='sql6.freemysqlhosting.net', user='sql6505205', password='LCBNdFunMf',
+                                 database='sql6505205',
+                                 charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
 
                 cur = connection.cursor()
                 cur.execute("SELECT chat_id FROM chat WHERE users = {}".format(UserCounter))
