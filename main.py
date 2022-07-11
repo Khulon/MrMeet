@@ -55,8 +55,11 @@ class User:
 
 
 def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:Date 3:Status
-    connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
-                                 database='g4gIqpoa8A',
+    #connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
+    #                             database='g4gIqpoa8A',
+    #                             charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(host='db4free.net', user='mrmeet', password='ccleonliew',
+                                 database='mrmeet',
                                  charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     cur = connection.cursor()
 
@@ -193,6 +196,8 @@ def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:
 # Check if existing user chat. If not, Initialize.
 def UserChecker(ChatIDCurrent):
     for x in users:
+        print('x is {}'.format(x))
+        print('and the chat id is {}'.format(users[x].chat_id))
         if ChatIDCurrent == users[x].chat_id:
             return
 
@@ -205,13 +210,11 @@ def UserChecker(ChatIDCurrent):
                                              ['Pending', 'Pending', 'Pending', 'Pending', 'Pending'],
                                              0, ['', '', '', '', ''], ['', '', '', '', ''],
                                              ['Pending', 'Pending', 'Pending', 'Pending', 'Pending'])
-    connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
-                                 database='g4gIqpoa8A',
+    connection = pymysql.connect(host='db4free.net', user='mrmeet', password='ccleonliew',
+                                 database='mrmeet',
                                  charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
 
     Pass = generator()
-    # connection = pymysql.connect(host='localhost', user='root', password='Cleonliew88', database='mysql',
-    #                             charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     cur = connection.cursor()
     cur.execute("INSERT INTO chat(chat_id, pass)"
                 "VALUES({}, '{}')".format(ChatIDCurrent, Pass))
@@ -324,8 +327,8 @@ async def StartTab(message: types.Message):
 @dp.message_handler(commands=['WebApp'])
 async def WebAppTab(message: types.Message):
     ChatIDCurrent = message.chat.id
-    connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
-                                 database='g4gIqpoa8A',
+    connection = pymysql.connect(host='db4free.net', user='mrmeet', password='ccleonliew',
+                                 database='mrmeet',
                                  charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     cur = connection.cursor()
     cur.execute("SELECT pass FROM chat WHERE chat_id = {}".format(ChatIDCurrent))
@@ -334,7 +337,7 @@ async def WebAppTab(message: types.Message):
     result = str(result).replace('{', '').replace('}', '').replace(':', '').replace("'", "")
     result = result[n + 1:]
 
-    await message.answer("For easier editing of Objectives and Milestones, visit: http://websitehere \n\n"
+    await message.answer("For easier editing of Objectives and Milestones, visit: https://MrMeet-1.ldogsloop.repl.co \n\n"
                          "*Chat ID:* {}\n*Password:* {}".format(ChatIDCurrent, result), parse_mode='Markdown')
 
 
@@ -1053,6 +1056,11 @@ async def task2():
             timer += 1
             if timer == 1000:  # if one day has passed
                 timer = -1
+                print('printing now')
+                for x in users:
+                    print('x is {}'.format(x))
+                    print('and the chat id is {}'.format(users[x].chat_id))
+                print('end print')
             print('timer{}'.format(timer))
 
         else:
@@ -1065,9 +1073,9 @@ async def task2():
                 timer = 0
             else:
                 UserCounter += 1
-                connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
-                                             database='g4gIqpoa8A',
-                                             charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+                connection = pymysql.connect(host='db4free.net', user='mrmeet', password='ccleonliew',
+                                 database='mrmeet',
+                                 charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
 
                 cur = connection.cursor()
                 cur.execute("SELECT chat_id FROM chat WHERE users = {}".format(UserCounter))
