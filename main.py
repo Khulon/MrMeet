@@ -58,8 +58,8 @@ def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:
     #connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
     #                             database='g4gIqpoa8A',
     #                             charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
-    connection = pymysql.connect(host='sql6.freemysqlhosting.net', user='sql6505205', password='LCBNdFunMf',
-                                 database='sql6505205',
+    connection = pymysql.connect(host='db4free.net', user='mrmeet', password='ccleonliew',
+                                 database='mrmeet',
                                  charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     cur = connection.cursor()
 
@@ -210,13 +210,11 @@ def UserChecker(ChatIDCurrent):
                                              ['Pending', 'Pending', 'Pending', 'Pending', 'Pending'],
                                              0, ['', '', '', '', ''], ['', '', '', '', ''],
                                              ['Pending', 'Pending', 'Pending', 'Pending', 'Pending'])
-    connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
-                                 database='g4gIqpoa8A',
+    connection = pymysql.connect(host='db4free.net', user='mrmeet', password='ccleonliew',
+                                 database='mrmeet',
                                  charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
 
     Pass = generator()
-    # connection = pymysql.connect(host='localhost', user='root', password='Cleonliew88', database='mysql',
-    #                             charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     cur = connection.cursor()
     cur.execute("INSERT INTO chat(chat_id, pass)"
                 "VALUES({}, '{}')".format(ChatIDCurrent, Pass))
@@ -329,8 +327,8 @@ async def StartTab(message: types.Message):
 @dp.message_handler(commands=['WebApp'])
 async def WebAppTab(message: types.Message):
     ChatIDCurrent = message.chat.id
-    connection = pymysql.connect(host='sql6.freemysqlhosting.net', user='sql6505205', password='LCBNdFunMf',
-                                 database='sql6505205',
+    connection = pymysql.connect(host='db4free.net', user='mrmeet', password='ccleonliew',
+                                 database='mrmeet',
                                  charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     cur = connection.cursor()
     cur.execute("SELECT pass FROM chat WHERE chat_id = {}".format(ChatIDCurrent))
@@ -1075,8 +1073,8 @@ async def task2():
                 timer = 0
             else:
                 UserCounter += 1
-                connection = pymysql.connect(host='sql6.freemysqlhosting.net', user='sql6505205', password='LCBNdFunMf',
-                                 database='sql6505205',
+                connection = pymysql.connect(host='db4free.net', user='mrmeet', password='ccleonliew',
+                                 database='mrmeet',
                                  charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
 
                 cur = connection.cursor()
