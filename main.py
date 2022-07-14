@@ -809,7 +809,7 @@ async def MilestoneTab(call: types.CallbackQuery):
     if call.data == 'Objective 1':
         ObjectiveMilestoneNo = users[str(ChatIDCurrent)].Objective1MilestoneNo
         if ObjectiveMilestoneNo != 0:
-            for x in range(1, ObjectiveMilestoneNo):
+            for x in range(1, ObjectiveMilestoneNo+1):
                 SyncDataBase('Query', ChatIDCurrent, 1, x, 1)
         ObjectiveDate = users[str(ChatIDCurrent)].MyObjectivesDate[0]
         MyObjective = users[str(ChatIDCurrent)].MyObjectives[0]
@@ -818,7 +818,7 @@ async def MilestoneTab(call: types.CallbackQuery):
     if call.data == 'Objective 2':
         ObjectiveMilestoneNo = users[str(ChatIDCurrent)].Objective2MilestoneNo
         if ObjectiveMilestoneNo != 0:
-            for x in range(1, ObjectiveMilestoneNo):
+            for x in range(1, ObjectiveMilestoneNo+1):
                 SyncDataBase('Query', ChatIDCurrent, 2, x, 1)
         ObjectiveDate = users[str(ChatIDCurrent)].MyObjectivesDate[1]
         MyObjective = users[str(ChatIDCurrent)].MyObjectives[1]
@@ -827,7 +827,7 @@ async def MilestoneTab(call: types.CallbackQuery):
     if call.data == 'Objective 3':
         ObjectiveMilestoneNo = users[str(ChatIDCurrent)].Objective3MilestoneNo
         if ObjectiveMilestoneNo != 0:
-            for x in range(1, ObjectiveMilestoneNo):
+            for x in range(1, ObjectiveMilestoneNo+1):
                 SyncDataBase('Query', ChatIDCurrent, 3, x, 1)
         ObjectiveDate = users[str(ChatIDCurrent)].MyObjectivesDate[2]
         MyObjective = users[str(ChatIDCurrent)].MyObjectives[2]
