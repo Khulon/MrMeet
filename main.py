@@ -54,7 +54,7 @@ class User:
         self.MyObjective3MilestoneStatus = MyObjective3MilestoneStatus
 
 
-def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:Date 3:Status
+def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:Date 3:Status 4:Number
     #connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
     #                             database='g4gIqpoa8A',
     #                             charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
@@ -81,6 +81,18 @@ def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:
                 result = str(result).replace('{', '').replace('}', '').replace(':', '').replace("'", "")
                 result = result[n + 1:]
                 users[str(ChatIDCurrent)].MyObjectivesDate[ListNo - 1] = result
+
+            if TypeNo == 4:  # Number
+                cur.execute("SELECT NewObjectivesNo FROM chat WHERE chat_id = {}".format(ChatIDCurrent))
+                result = cur.fetchone()
+                n = len('NewObjectivesNo')
+                result = str(result).replace('{', '').replace('}', '').replace(':', '').replace("'", "")
+                result = result[n + 1:]
+                users[str(ChatIDCurrent)].Objectiveno += int(result)
+                cur.execute("UPDATE chat SET NewObjectivesNo = {} WHERE chat_id = {}".format(0, ChatIDCurrent))
+
+
+
 
         else:
             if TypeNo == 1:  # name
@@ -131,6 +143,24 @@ def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:
                     users[str(ChatIDCurrent)].MyObjective2MilestoneStatus[ListNo - 1] = result
                 if ObjectiveNo == 3:
                     users[str(ChatIDCurrent)].MyObjective3MilestoneStatus[ListNo - 1] = result
+
+
+            if TypeNo == 4:  # Number
+                cur.execute("SELECT NewObjectives{}MilestoneNo FROM chat WHERE chat_id = {}".format(ObjectiveNo, ChatIDCurrent))
+                result = cur.fetchone()
+                n = len('NewObjectivesXMilestoneNo')
+                result = str(result).replace('{', '').replace('}', '').replace(':', '').replace("'", "")
+                result = result[n + 1:]
+                cur.execute("UPDATE chat SET NewObjectives{}MilestoneNo = {} WHERE chat_id = {}".format(ObjectiveNo, 0, ChatIDCurrent))
+
+                if ObjectiveNo == 1:
+                    users[str(ChatIDCurrent)].Objective1MilestoneNo += int(result)
+                if ObjectiveNo == 2:
+                    users[str(ChatIDCurrent)].Objective2MilestoneNo += int(result)
+                if ObjectiveNo == 3:
+                    users[str(ChatIDCurrent)].Objective3MilestoneNo += int(result)
+
+
 
     if Type == 'Update':
         if ObjectiveNo == 0:
@@ -363,7 +393,6 @@ def ShowOverview(ObjectiveNo, Message, ChatIDCurrent):
 
     if MilestoneNo == 0:
         SyncDataBase('Query', ChatIDCurrent, 0, ObjectiveNo, 1)
-        SyncDataBase('Query', ChatIDCurrent, 0, ObjectiveNo, 2)
         NewMessage = '*Overview for {}*\n'.format(users[str(ChatIDCurrent)].MyObjectives[ObjectiveNo - 1]) \
                      + 'Due *{}* in *{}* days\n\n'.format((users[str(ChatIDCurrent)].MyObjectivesDate[ObjectiveNo - 1]),
                                                           DaysLeft(ChatIDCurrent, 0, ObjectiveNo)) \
@@ -378,12 +407,18 @@ def ShowOverview(ObjectiveNo, Message, ChatIDCurrent):
 @dp.message_handler(commands=['Overview'])
 async def Overview(message: types.Message):
     ChatIDCurrent = message.chat.id
+    
+    SyncDataBase('Query', ChatIDCurrent, 0, 0, 4)
+    SyncDataBase('Query', ChatIDCurrent, 1, 0, 4)
+    SyncDataBase('Query', ChatIDCurrent, 2, 0, 4)
+    SyncDataBase('Query', ChatIDCurrent, 3, 0, 4)
     ObjectiveNo = users[str(ChatIDCurrent)].Objectiveno
 
     if ObjectiveNo == 0:
         await message.answer('You have no Objectives yet, go to the objectives tab to create some!')
 
     else:
+        await message.answer('This may take some time... Wait ah...')
         await message.answer('{}'.format(ShowOverview(ObjectiveNo, '', ChatIDCurrent)), parse_mode='Markdown')
 
 
@@ -424,6 +459,7 @@ def MaxObjective(Objectiveno, ChatIDCurrent):
 @dp.message_handler(commands=['Objectives'])
 async def ObjectivesTab(message: types.Message):
     ChatIDCurrent = message.chat.id
+    SyncDataBase('Query', ChatIDCurrent, 0, 0, 4)
     Objectiveno = users[str(ChatIDCurrent)].Objectiveno
     if Objectiveno < 3:
         await message.answer(
@@ -778,6 +814,9 @@ def ShowMilestones(MilestoneNo, ObjectiveNo, Message, ChatIDCurrent):
     text=['Show Milestones For Objective 1', 'Show Milestones For Objective 2', 'Show Milestones For Objective 3'])
 async def MilestoneTab(call: types.CallbackQuery):
     ChatIDCurrent = call.message.chat.id
+    SyncDataBase('Query', ChatIDCurrent, 1, 0, 4)
+    SyncDataBase('Query', ChatIDCurrent, 2, 0, 4)
+    SyncDataBase('Query', ChatIDCurrent, 3, 0, 4)
     Objective1MilestoneNo = users[str(ChatIDCurrent)].Objective1MilestoneNo
     Objective2MilestoneNo = users[str(ChatIDCurrent)].Objective2MilestoneNo
     Objective3MilestoneNo = users[str(ChatIDCurrent)].Objective3MilestoneNo
@@ -810,7 +849,7 @@ async def MilestoneTab(call: types.CallbackQuery):
     if call.data == 'Objective 1':
         ObjectiveMilestoneNo = users[str(ChatIDCurrent)].Objective1MilestoneNo
         if ObjectiveMilestoneNo != 0:
-            for x in range(1, ObjectiveMilestoneNo+1):
+            for x in range(1, ObjectiveMilestoneNo):
                 SyncDataBase('Query', ChatIDCurrent, 1, x, 1)
         ObjectiveDate = users[str(ChatIDCurrent)].MyObjectivesDate[0]
         MyObjective = users[str(ChatIDCurrent)].MyObjectives[0]
@@ -819,7 +858,7 @@ async def MilestoneTab(call: types.CallbackQuery):
     if call.data == 'Objective 2':
         ObjectiveMilestoneNo = users[str(ChatIDCurrent)].Objective2MilestoneNo
         if ObjectiveMilestoneNo != 0:
-            for x in range(1, ObjectiveMilestoneNo+1):
+            for x in range(1, ObjectiveMilestoneNo):
                 SyncDataBase('Query', ChatIDCurrent, 2, x, 1)
         ObjectiveDate = users[str(ChatIDCurrent)].MyObjectivesDate[1]
         MyObjective = users[str(ChatIDCurrent)].MyObjectives[1]
@@ -828,7 +867,7 @@ async def MilestoneTab(call: types.CallbackQuery):
     if call.data == 'Objective 3':
         ObjectiveMilestoneNo = users[str(ChatIDCurrent)].Objective3MilestoneNo
         if ObjectiveMilestoneNo != 0:
-            for x in range(1, ObjectiveMilestoneNo+1):
+            for x in range(1, ObjectiveMilestoneNo):
                 SyncDataBase('Query', ChatIDCurrent, 3, x, 1)
         ObjectiveDate = users[str(ChatIDCurrent)].MyObjectivesDate[2]
         MyObjective = users[str(ChatIDCurrent)].MyObjectives[2]
