@@ -407,7 +407,7 @@ def ShowOverview(ObjectiveNo, Message, ChatIDCurrent):
 @dp.message_handler(commands=['Overview'])
 async def Overview(message: types.Message):
     ChatIDCurrent = message.chat.id
-    
+    await message.answer('This may take some time... Wait ah...')
     SyncDataBase('Query', ChatIDCurrent, 0, 0, 4)
     SyncDataBase('Query', ChatIDCurrent, 1, 0, 4)
     SyncDataBase('Query', ChatIDCurrent, 2, 0, 4)
@@ -418,7 +418,6 @@ async def Overview(message: types.Message):
         await message.answer('You have no Objectives yet, go to the objectives tab to create some!')
 
     else:
-        await message.answer('This may take some time... Wait ah...')
         await message.answer('{}'.format(ShowOverview(ObjectiveNo, '', ChatIDCurrent)), parse_mode='Markdown')
 
 
