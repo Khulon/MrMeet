@@ -363,6 +363,7 @@ def ShowOverview(ObjectiveNo, Message, ChatIDCurrent):
 
     if MilestoneNo == 0:
         SyncDataBase('Query', ChatIDCurrent, 0, ObjectiveNo, 1)
+        SyncDataBase('Query', ChatIDCurrent, 0, ObjectiveNo, 2)
         NewMessage = '*Overview for {}*\n'.format(users[str(ChatIDCurrent)].MyObjectives[ObjectiveNo - 1]) \
                      + 'Due *{}* in *{}* days\n\n'.format((users[str(ChatIDCurrent)].MyObjectivesDate[ObjectiveNo - 1]),
                                                           DaysLeft(ChatIDCurrent, 0, ObjectiveNo)) \
