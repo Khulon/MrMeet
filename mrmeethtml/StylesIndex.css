@@ -1,0 +1,357 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+form {
+        font-family: 'Quicksand', sans-serif;
+}
+
+
+
+
+.box {
+    border: 0.5px solid #D2D2D2;
+    float: left;
+    width:80%; 
+    background: beige; 
+    padding: 20px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+
+
+.in-box {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+
+.add-btn {
+        box-sizing: border-box;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-radius: 50px;
+        font-size: 0.6em;
+        border: none;
+        width: 150px;
+        background-color: #dadac8 ;
+        float: left;
+}
+
+
+.add-btn:hover{
+        background-color: #c0c0b4;
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+}
+
+.objective-btn {
+        box-sizing: border-box;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-radius: 50px;
+        font-size: 0.6em;
+        border: none;
+        width: 150px;
+        background-color: #DE5F4C ;
+        float: left;
+}
+
+
+.objective-btn:hover{
+        background-color: #C95746;
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+}
+
+
+/*popups*/
+.popup .overlay {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,0.7);
+  z-index:1;
+  display:none;
+}
+
+.popup .content {
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%) scale(0);
+  background:#fff;
+  width:450px;
+  height:270px;
+  z-index:2;
+  text-align:center;
+  padding:20px;
+  box-sizing:border-box;
+  border-radius: 20px;
+}
+
+.popup .close-btn {
+  position:absolute;
+  right:20px;
+  top:20px;
+  width:30px;
+  height:30px;
+  background:#DE5F4C;
+  color:#fff;
+  font-size:25px;
+  font-weight:600;
+  line-height:30px;
+  text-align:center;
+}
+
+.popup .close-btn:hover {
+  background:#C95746;
+}
+
+.popup.active .overlay {
+  display:block;
+}
+
+.popup.active .content {
+  transition:all 300ms ease-in-out;
+  transform:translate(-50%, -50%) scale(1);
+}
+
+.edit.active {
+  
+}
+
+.container {
+  width:100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-gap: 10%;
+  justify-items: center;
+}
+
+
+
+
+.obj{
+  height:40px;
+  width: 200px;
+  position: relative;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.MilestoneBox {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+  align-items: center;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+  width: 70%;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Style the header */
+.header {
+background-color: beige;
+padding: 30px 40px;
+color: rgb(92, 48, 48);
+text-align: center;
+
+border-radius: 50px;
+width: 70%;
+font-family: 'Quicksand', sans-serif;
+border: 0.5px solid #D2D2D2;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the input */
+input.tdlInput {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  background: #f9f9f9;
+}
+
+input.MilestoneInput {
+  margin: 0;
+  border: none;
+  border: solid;
+  border-radius: 0;
+  border-width: 0.5px;
+  border-color: #f5f5dc;
+  width: 170px;
+  padding: 10px;
+  float: right;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  background: #f9f9f9;
+}
+
+input.MilestoneInput:disabled 
+{
+  opacity: 70%;
+}
+
+select.MilestoneInput {
+  margin: 0;
+  border: none;
+  border: solid;
+  border-radius: 0;
+  border-width: 0.5px;
+  border-color: #f5f5dc;
+  width: 170px;
+  padding: 10px;
+  float: right;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  background: #f9f9f9;
+}
+
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #DE5F4C;
+  color: white;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #ad3e00;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #6a6a6a;
+  overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add an active class to highlight the current page */
+.topnav a.active {
+  background-color: #f0685c;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+
+
+
+
+
+
+
+

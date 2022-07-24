@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+header {
+        padding-top: 20px;
+        padding-bottom: 20px;
+}
+
+h1 {
+        font-family: 'Quicksand', sans-serif;
+}
+
+p {
+        padding-right: 20px;
+        padding-left: 10px;
+}
+
+
+form {
+        padding-right: 20px;
+        padding-left: 20px;
+        font-family: 'Quicksand', sans-serif;
+}
+
+
+.logo {
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+.large-fld:focus{
+        outline: none;
+        border: 0.5px solid #4696C9;
+        box-shadow: 0 0 2px #4696C9;
+}
+
+.large-fld  {
+        box-sizing: border-box;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-right: 20px;
+        padding-left: 20px;
+        border-radius: 50px;
+        font-size: 1.2em;
+        border: 0.5px solid #D2D2D2;
+        width: 100%;
+}
+
+.large-fld:hover{
+        border: 0.5px solid #DE5F4C;
+        box-shadow: 0 0 2px #DE5F4C;
+}
+
+
+.login-btn {
+        box-sizing: border-box;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-radius: 50px;
+        font-size: 1.1em;
+        border: none;
+        width: 100%;
+        background-color: #DE5F4C ;
+}
+
+.login-btn:hover{
+        background-color: #C95746;
+        cursor: pointer;
+}
+
+p#HomeInfo span {
+        color: #8A9543;
+}
+
+.ErrorMsg {
+        padding-left: 10px;
+}
+
