@@ -1097,7 +1097,7 @@ async def task2():
 
         if timer >= 0:
             timer += 1
-            if timer == 36000:  # if one day has passed
+            if timer == 150:  # if one day has passed
                 timer = -1
                 print('printing now')
                 for x in users:
