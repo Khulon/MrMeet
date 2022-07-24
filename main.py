@@ -1048,7 +1048,7 @@ def SendReminder(ChatIDCurrent):
             print(x)
             SyncDataBase('Query', ChatIDCurrent, 0, ListNo, 2)
             Date = DaysLeft(ChatIDCurrent, 0, ListNo)
-            if Date == 7 or Date == 14:
+            if Date == 1 or Date == 2 or Date == 3 or Date == 4 or Date == 5 or Date == 6 or Date == 7 or Date == 14:
                 Dates[Counter] = Date
                 Identity[Counter] = x * 10
                 Counter += 1
