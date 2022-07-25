@@ -254,7 +254,7 @@ def UserChecker(ChatIDCurrent):
 
 
 def generator():
-    chars = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&*"
+    chars = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&"
     password = ""
     for x in range(10):
         password_char = random.choice(chars)
