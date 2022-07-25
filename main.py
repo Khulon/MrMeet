@@ -20,6 +20,7 @@ UserCounter = 0
 UserNo = 0
 
 
+# defining all key vairables used to store information
 class User:
     def __init__(self, chat_id,
                  avalue, bvalue, MessageHandlerType,
@@ -54,8 +55,9 @@ class User:
         self.MyObjective3MilestoneStatus = MyObjective3MilestoneStatus
 
 
+# Use this function to update or read database
 def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:Date 3:Status 4:Number
-    #connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
+    # connection = pymysql.connect(host='remotemysql.com', user='g4gIqpoa8A', password='V2sTQ01WsK',
     #                             database='g4gIqpoa8A',
     #                             charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
     connection = pymysql.connect(host='db4free.net', user='mrmeet', password='ccleonliew',
@@ -144,14 +146,15 @@ def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:
                 if ObjectiveNo == 3:
                     users[str(ChatIDCurrent)].MyObjective3MilestoneStatus[ListNo - 1] = result
 
-
             if TypeNo == 4:  # Number
-                cur.execute("SELECT NewObjectives{}MilestoneNo FROM chat WHERE chat_id = {}".format(ObjectiveNo, ChatIDCurrent))
+                cur.execute(
+                    "SELECT NewObjectives{}MilestoneNo FROM chat WHERE chat_id = {}".format(ObjectiveNo, ChatIDCurrent))
                 result = cur.fetchone()
                 n = len('NewObjectivesXMilestoneNo')
                 result = str(result).replace('{', '').replace('}', '').replace(':', '').replace("'", "")
                 result = result[n + 1:]
-                cur.execute("UPDATE chat SET NewObjectives{}MilestoneNo = {} WHERE chat_id = {}".format(ObjectiveNo, 0, ChatIDCurrent))
+                cur.execute("UPDATE chat SET NewObjectives{}MilestoneNo = {} WHERE chat_id = {}".format(ObjectiveNo, 0,
+                                                                                                        ChatIDCurrent))
 
                 if ObjectiveNo == 1:
                     users[str(ChatIDCurrent)].Objective1MilestoneNo += int(result)
@@ -159,8 +162,6 @@ def SyncDataBase(Type, ChatIDCurrent, ObjectiveNo, ListNo, TypeNo):  # 1:Name 2:
                     users[str(ChatIDCurrent)].Objective2MilestoneNo += int(result)
                 if ObjectiveNo == 3:
                     users[str(ChatIDCurrent)].Objective3MilestoneNo += int(result)
-
-
 
     if Type == 'Update':
         if ObjectiveNo == 0:
@@ -253,6 +254,7 @@ def UserChecker(ChatIDCurrent):
     UserNo += 1
 
 
+# generate a random password
 def generator():
     chars = "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM!@#$%^&"
     password = ""
@@ -293,6 +295,7 @@ def NextDays(day, month, year):
             return NextDays(day - 31, month + 1, year)
 
 
+# when click on 'this week' option for the meetup tab
 @dp.callback_query_handler(text=['This week'])
 async def poll(call: types.CallbackQuery):
     date1 = dt.date.today()
@@ -309,6 +312,7 @@ async def poll(call: types.CallbackQuery):
                                    allows_multiple_answers=True)
 
 
+# when click on 'custom' for the meetup command
 @dp.callback_query_handler(text=['Custom'])
 async def poll(call: types.CallbackQuery):
     await call.message.answer('Enter your start date in the form ddmmyy')
@@ -320,7 +324,7 @@ async def poll(call: types.CallbackQuery):
         print('hi')
 
 
-
+# when click on 'next week' for the meetup command
 @dp.callback_query_handler(text=['Next week'])
 async def poll(call: types.CallbackQuery):
     date1 = dt.date.today()
@@ -337,6 +341,7 @@ async def poll(call: types.CallbackQuery):
                                    allows_multiple_answers=True)
 
 
+# when use meetup command
 @dp.message_handler(commands=['Meetup'])
 async def StartTab(message: types.Message):
     await message.answer(
@@ -354,6 +359,7 @@ async def StartTab(message: types.Message):
         reply_markup=Keyboard1(), parse_mode='Markdown')
 
 
+# when click on WebApp command
 @dp.message_handler(commands=['WebApp'])
 async def WebAppTab(message: types.Message):
     ChatIDCurrent = message.chat.id
@@ -367,8 +373,9 @@ async def WebAppTab(message: types.Message):
     result = str(result).replace('{', '').replace('}', '').replace(':', '').replace("'", "")
     result = result[n + 1:]
 
-    await message.answer("For easier editing of Objectives and Milestones, visit: https://MrMeet-1.ldogsloop.repl.co \n\n"
-                         "*Chat ID:* {}\n*Password:* {}".format(ChatIDCurrent, result), parse_mode='Markdown')
+    await message.answer(
+        "For easier editing of Objectives and Milestones, visit: https://MrMeet-1.ldogsloop.repl.co \n\n"
+        "*Chat ID:* {}\n*Password:* {}".format(ChatIDCurrent, result), parse_mode='Markdown')
 
 
 # keyboard interface when /start
@@ -380,6 +387,7 @@ def Keyboard1():
     return ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).row(button3, button4).row(button1, button2)
 
 
+# recursive function used to create message when use overview function
 def ShowOverview(ObjectiveNo, Message, ChatIDCurrent):
     if ObjectiveNo == 0:
         return Message
@@ -404,10 +412,12 @@ def ShowOverview(ObjectiveNo, Message, ChatIDCurrent):
     return ShowOverview(ObjectiveNo - 1, NewMessage, ChatIDCurrent)
 
 
+# when use 'overview' command
 @dp.message_handler(commands=['Overview'])
 async def Overview(message: types.Message):
     ChatIDCurrent = message.chat.id
 
+    await message.answer('This may take some time... Wait ah...')
     SyncDataBase('Query', ChatIDCurrent, 0, 0, 4)
     SyncDataBase('Query', ChatIDCurrent, 1, 0, 4)
     SyncDataBase('Query', ChatIDCurrent, 2, 0, 4)
@@ -418,7 +428,6 @@ async def Overview(message: types.Message):
         await message.answer('You have no Objectives yet, go to the objectives tab to create some!')
 
     else:
-        await message.answer('This may take some time... Wait ah...')
         await message.answer('{}'.format(ShowOverview(ObjectiveNo, '', ChatIDCurrent)), parse_mode='Markdown')
 
 
@@ -515,6 +524,7 @@ def DateChecker(ObjectiveDate):
     return 'True'
 
 
+# count how many days passed the date
 def daysNeg(day, month, year, DayToday, MonthToday, YearToday, no):
     if year < YearToday:
         if month == 13:
@@ -539,6 +549,7 @@ def daysNeg(day, month, year, DayToday, MonthToday, YearToday, no):
             return no + (day - DayToday)
 
 
+# count how many days left to the date
 def days(day, month, year, DayToday, MonthToday, YearToday, no):
     if year < YearToday:
         return daysNeg(day, month, year, DayToday, MonthToday, YearToday, no)
@@ -850,7 +861,7 @@ async def MilestoneTab(call: types.CallbackQuery):
         SyncDataBase('Query', ChatIDCurrent, 1, 0, 4)
         ObjectiveMilestoneNo = users[str(ChatIDCurrent)].Objective1MilestoneNo
         if ObjectiveMilestoneNo != 0:
-            for x in range(1, ObjectiveMilestoneNo+1):
+            for x in range(1, ObjectiveMilestoneNo + 1):
                 SyncDataBase('Query', ChatIDCurrent, 1, x, 1)
         ObjectiveDate = users[str(ChatIDCurrent)].MyObjectivesDate[0]
         MyObjective = users[str(ChatIDCurrent)].MyObjectives[0]
@@ -860,7 +871,7 @@ async def MilestoneTab(call: types.CallbackQuery):
         SyncDataBase('Query', ChatIDCurrent, 2, 0, 4)
         ObjectiveMilestoneNo = users[str(ChatIDCurrent)].Objective2MilestoneNo
         if ObjectiveMilestoneNo != 0:
-            for x in range(1, ObjectiveMilestoneNo+1):
+            for x in range(1, ObjectiveMilestoneNo + 1):
                 SyncDataBase('Query', ChatIDCurrent, 2, x, 1)
         ObjectiveDate = users[str(ChatIDCurrent)].MyObjectivesDate[1]
         MyObjective = users[str(ChatIDCurrent)].MyObjectives[1]
@@ -870,7 +881,7 @@ async def MilestoneTab(call: types.CallbackQuery):
         SyncDataBase('Query', ChatIDCurrent, 3, 0, 4)
         ObjectiveMilestoneNo = users[str(ChatIDCurrent)].Objective3MilestoneNo
         if ObjectiveMilestoneNo != 0:
-            for x in range(1, ObjectiveMilestoneNo+1):
+            for x in range(1, ObjectiveMilestoneNo + 1):
                 SyncDataBase('Query', ChatIDCurrent, 3, x, 1)
         ObjectiveDate = users[str(ChatIDCurrent)].MyObjectivesDate[2]
         MyObjective = users[str(ChatIDCurrent)].MyObjectives[2]
@@ -889,7 +900,7 @@ async def MilestoneTab(call: types.CallbackQuery):
             reply_markup=MaxMilestone(ObjectiveMilestoneNo, ObjectiveNo, ChatIDCurrent), parse_mode='Markdown')
 
 
-# Message handling
+# all Message handling checkers
 @dp.message_handler()
 async def RecieveMsg(message: types.Message):
     ChatIDCurrent = message.chat.id
@@ -984,19 +995,20 @@ async def RecieveMsg(message: types.Message):
             month = int(str(Date)[2:4])
             day = int(str(Date)[0:2])
             await message.answer_poll(question='Poll for availability',
-                                       options=[NextDays(day, month, year), NextDays(day + 1, month, year),
-                                                NextDays(day + 2, month, year), NextDays(day + 3, month, year),
-                                                NextDays(day + 4, month, year), NextDays(day + 5, month, year),
-                                                NextDays(day + 6, month, year)],
-                                       type='regular',
-                                       is_anonymous=False,
-                                       allows_multiple_answers=True)
+                                      options=[NextDays(day, month, year), NextDays(day + 1, month, year),
+                                               NextDays(day + 2, month, year), NextDays(day + 3, month, year),
+                                               NextDays(day + 4, month, year), NextDays(day + 5, month, year),
+                                               NextDays(day + 6, month, year)],
+                                      type='regular',
+                                      is_anonymous=False,
+                                      allows_multiple_answers=True)
 
         else:
             await message.answer('invalid input try again, is your format ddmmyy?')
             users[str(ChatIDCurrent)].avalue -= 1
 
 
+# function to send a reminder to each chat
 def SendReminder(ChatIDCurrent):
     ObjectiveNo = users[str(ChatIDCurrent)].Objectiveno
     Counter = 0
@@ -1085,10 +1097,12 @@ def SendReminder(ChatIDCurrent):
     return Message + 'Help lah! Use /meetup leh...'
 
 
+# poll for any commands/ message
 async def task1():
     await dp.start_polling()
 
 
+# timer counting up
 async def task2():
     while True:
         global timer
@@ -1097,7 +1111,7 @@ async def task2():
 
         if timer >= 0:
             timer += 1
-            if timer == 150:  # if one day has passed
+            if timer == 36000:  # if 10 hours passed
                 timer = -1
                 print('printing now')
                 for x in users:
@@ -1117,8 +1131,8 @@ async def task2():
             else:
                 UserCounter += 1
                 connection = pymysql.connect(host='db4free.net', user='mrmeet', password='ccleonliew',
-                                 database='mrmeet',
-                                 charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+                                             database='mrmeet',
+                                             charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
 
                 cur = connection.cursor()
                 cur.execute("SELECT chat_id FROM chat WHERE users = {}".format(UserCounter))
