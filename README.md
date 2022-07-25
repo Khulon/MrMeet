@@ -154,8 +154,10 @@
       <strong>Logout Button</strong>
       <p>Users can logout  to the Login page.</p>
     </ol>
+    </li>
   
   #### Extensions - Sync telegram bot and webapp, Calendar
+  <li>
    <ol>
     <strong> Backend - Sync objectives and meetings</strong>
     <p>Objectives and Meetings are consistent between telegram bot and </p>
@@ -163,9 +165,9 @@
   </ol>
   <ol>
       <strong> Calendar </strong>
-      <p>Users can logout to the Login page.</p>
+      <p>Users can visulaise their meetings on the calendar under the meetings tab.</p>
     </ol>
-
+</li>
 
 ### Built With
 
@@ -184,7 +186,7 @@
 
 ## Roadmap
 
-<a href="www.sgunchained.com"><strong>Check out the website»</strong></a>
+<a href="https://mrmeet-1.ldogsloop.repl.co/login.php"><strong>Check out the website»</strong></a>
 
 - [x] User Login Page
 - [x] Telegram Bot - Create and edit objectives and miletones
