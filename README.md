@@ -199,6 +199,10 @@
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+## User Testing
+<a href="https://nusu-my.sharepoint.com/:w:/g/personal/e0725626_u_nus_edu/EfMTmHuY-rdLr5wYEVBHmjYBDS3aDuCf3MIUiZ6ZN38HDw?e=gkdvgj"><strong>Check out the  Testing Log»</strong></a>
+
+
 <!-- CONTACT -->
 
 ## Contact
@@ -207,6 +211,7 @@
 <p>Cleon Liew - cleonliew@gmail.com</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 
 <!-- ACKNOWLEDGMENTS -->
 
