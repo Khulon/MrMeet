@@ -169,12 +169,13 @@
 
 ### Built With
 
-- [React.js](https://reactjs.org/)
-- [Bootstrap](https://getbootstrap.com)
-- [Django](https://www.djangoproject.com)
-- [DjangoRestFramework](https://www.django-rest-framework.org)
-- [PostgreSQL](https://www.postgresql.org)
-- [AWS](https://aws.amazon.com)
+- [MySQL](https://www.mysql.com)
+- [JQuery]https://jqueryui.com/)
+- [Heroku](https://www.heroku.com)
+- [PopSQL](https://popsql.com)
+- [Replit](https://replit.com/~)
+- [TailwindCSS](https://tailwindcss.com)
+- HTML, Javascript, CSS, PHP
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
