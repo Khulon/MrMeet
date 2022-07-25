@@ -172,7 +172,7 @@
 ### Built With
 
 - [MySQL](https://www.mysql.com)
-- [JQuery]https://jqueryui.com/)
+- [JQuery](https://jqueryui.com/)
 - [Heroku](https://www.heroku.com)
 - [PopSQL](https://popsql.com)
 - [Replit](https://replit.com/~)
