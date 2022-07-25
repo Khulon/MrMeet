@@ -185,7 +185,7 @@
 <!-- ROADMAP -->
 
 ## Roadmap
-<a href="https://t.me/MrMeetBot"><strong>Check out the webapp»</strong></a>
+<div><a href="https://t.me/MrMeetBot"><strong>Check out the Telegram bot»</strong></a></div>
 <a href="https://mrmeet-1.ldogsloop.repl.co/login.php"><strong>Check out the webapp»</strong></a>
 
 - [x] User Login Page
