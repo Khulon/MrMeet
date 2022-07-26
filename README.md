@@ -93,7 +93,7 @@
 
 ### Project Scope
 
-<p>The scope of our Orbital project can be broken down into 3 parts - <strong>Telegram Bot, Webapp and extensions</strong></p>
+<p>The scope of our Orbital project can be broken down into 3 parts - <strong>Telegram Bot, Webapp and Extensions</strong></p>
 <p>Telegram Bot - <strong>Set Objectives, Meetups, Overview and Retrieving Login Details</strong></p>
 <p>Webapp - <strong>User Login, Dashboard</strong></p>
 <p>Extensions - <strong>Sync telegram bot and webapp, Calendar</strong></p>
@@ -156,11 +156,16 @@
     </ol>
     </li>
   
-  #### Extensions - Sync telegram bot and webapp, Calendar
+  #### Extensions - Sync telegram bot and webapp, Calendar, Notifications
   <li>
    <ol>
     <strong> Backend - Sync objectives and meetings</strong>
-    <p>Objectives and Meetings are consistent between telegram bot and </p>
+    <p>Objectives and Meetings are consistent between telegram bot and Web app</p>
+      
+  </ol>
+   <ol>
+    <strong> Telegram Bot - Alerts</strong>
+    <p>Mr Meet alerts when there are 0 objectives  </p>
       
   </ol>
   <ol>
