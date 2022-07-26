@@ -127,23 +127,18 @@
 
 #### Webapp - User Login, Dashboard
 
-<li>
   <ol>
     <strong>User Login</strong>
     <p>Simple Chat Id and Login using the details from /webapp from telegram bot</p>
-      
-  </ol>
+   </ol>
     <ol>
     <strong>DashBoard - Icon</strong>
-    <p>MrMeet Icon to redirect to telegram Bot</p>
-      
+    <p>MrMeet Icon to redirect to telegram Bot</p>  
   </ol>
       <ol>
     <strong>Dashboard - Overview of Objectives</strong>
-        <p>User can add or edit their objective details.Includes a popout calendar for datelines</p>
-    
+        <p>User can add or edit their objective details.Includes a popout calendar for datelines</p> 
   </ol>
-  
       <ol>
     <strong>DashBoard - Add or edit milestones </strong>
     <p>User can add or edit their milestones in each objectives.Includes a popout calendar for datelines</p>
@@ -154,7 +149,6 @@
       <strong>Logout Button</strong>
       <p>Users can logout  to the Login page.</p>
     </ol>
-    </li>
   
   #### Extensions - Sync telegram bot and webapp, Calendar, Notifications
   <li>
