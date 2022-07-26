@@ -141,11 +141,9 @@
   </ol>
       <ol>
     <strong>DashBoard - Add or edit milestones </strong>
-    <p>User can add or edit their milestones in each objectives.Includes a popout calendar for datelines</p>
-      
+    <p>User can add or edit their milestones in each objectives.Includes a popout calendar for datelines</p>    
   </ol>
-  
-    <ol>
+  <ol>
       <strong>Logout Button</strong>
       <p>Users can logout  to the Login page.</p>
     </ol>
