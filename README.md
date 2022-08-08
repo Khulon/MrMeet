@@ -56,9 +56,9 @@
 
 <p>Gemini</p>
 
-### Project Scope
+### Project Foreword
 
-<p>Brief: Mr.Meet,  your friendly singaporean uncle bot who helps your group to meet more easily and be that uncle to remind you of your dreaded deadlines and milestones! It is both a telegram bot and a web app for a visual overview</p>
+<p>Meet Mr.Meet - your friendly singaporean uncle bot we envisoned to help organise group meetings more easily and be that naggy uncle we come to know and love to remind you of your dreaded deadlines and milestones! It is both a telegram bot and a web app for a visual overview</p>
 
 <p> We hope to make a Telegram Bot that makes initiating and planning work or casual meetups more smooth sailing, and that can remind its users of objectives and milestones to prompt action-taking. </p>
 
@@ -88,7 +88,7 @@
 - [ ] As a person who wants to organise an event with friends, family and even colleagues, I want to be able to know which days would be best for everyone.
 
 #### Admin
-- [ ] As an admin who manages the telegram bot adn web app, I want to be able to add, update and delete any features to improve and update for better user experience.
+- [ ] As an admin who manages the telegram bot and web app, I want to be able to add, update and delete any features to improve and update for better user experience.
 
 
 ### Project Scope
