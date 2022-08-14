@@ -200,7 +200,7 @@
 <a href="https://nusu-my.sharepoint.com/:w:/g/personal/e0725626_u_nus_edu/EfMTmHuY-rdLr5wYEVBHmjYBDS3aDuCf3MIUiZ6ZN38HDw?e=gkdvgj"><strong>Check out the  Testing Log»</strong></a>
 
 ## Integration of Key Technologies
-<p>The Key Technologies of our Orbital project can be  3 main key technologies - <strong> Python(Telegram Bot hosted by Heroku), mySQL(Hosted by db4free.net), HTML and PHP(Hosted by Replit)</strong></p>
+<p>The Key Technologies of our Orbital project can attributed to 3 main key technologies - <strong> Python(Telegram Bot hosted by Heroku), mySQL(Hosted by db4free.net), HTML and PHP(Hosted by Replit)</strong></p>
 
 <p> Import pymySQL import pymySQL.cursors <p>
   
