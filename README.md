@@ -199,6 +199,15 @@
 ## User Testing
 <a href="https://nusu-my.sharepoint.com/:w:/g/personal/e0725626_u_nus_edu/EfMTmHuY-rdLr5wYEVBHmjYBDS3aDuCf3MIUiZ6ZN38HDw?e=gkdvgj"><strong>Check out the  Testing Log»</strong></a>
 
+## Integration of Key Technologies
+<p>The Key Technologies of our Orbital project can be  3 main key technologies - <strong> Python(Telegram Bot hosted by Heroku), mySQL(Hosted by db4free.net), HTML and PHP(Hosted by Replit)</strong></p>
+
+<p> Import pymySQL import pymySQL.cursors <p>
+  
+  <p> Heroku - We initially used Replit to host our python console but switched to Heroku for 24/7 free hosting servcies unlike replit where it requires computer to be online.To connect to Heroku, we had to upload code to Github and connect Github Repository to Heroku. <p>
+     <p> db4free.net - Provided us a database of ChatID and password that can be accessed remotely.<p>
+       <p> Replit - We used replit to host .PHP files. Using the ChatID and password, we used PHP to connect the frontend to the database.
+     
 
 <!-- CONTACT -->
 
